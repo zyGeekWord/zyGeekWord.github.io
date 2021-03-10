@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>爱吃猫粮的哈士奇的个人博客</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-03-10T08:41:04.680Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>缓存</title>
+    <link href="http://example.com/2021/03/10/%E7%BC%93%E5%AD%98/"/>
+    <id>http://example.com/2021/03/10/%E7%BC%93%E5%AD%98/</id>
+    <published>2021-03-10T08:40:10.000Z</published>
+    <updated>2021-03-10T08:41:04.680Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;缓存（缓存雪崩，缓存击穿，缓存穿透）&quot;&gt;&lt;a href=&quot;#缓存（缓存雪崩，缓存击穿，缓存穿透）&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="缓存" scheme="http://example.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>装箱拆箱</title>
+    <link href="http://example.com/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"/>
+    <id>http://example.com/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/</id>
+    <published>2021-03-10T08:35:28.000Z</published>
+    <updated>2021-03-10T08:41:28.941Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;装箱-java中将这个机制设置为自动&quot;&gt;&lt;a href=&quot;#装箱-java中将这个机制设置为自动&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库事务</title>
+    <link href="http://example.com/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/"/>
+    <id>http://example.com/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/</id>
+    <published>2021-03-10T08:28:15.000Z</published>
+    <updated>2021-03-10T08:44:21.280Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;四大特性&quot;&gt;&lt;a href=&quot;#四大特性&quot; class=&quot;headerlink&quot; title=&quot;四大特性&quot;&gt;&lt;/a&gt;四大特性&lt;/h2&gt;&lt;h3 id=&quot;原子性&quot;&gt;&lt;a href=&quot;#原子性&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单例模式</title>
+    <link href="http://example.com/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://example.com/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</id>
+    <published>2021-03-10T03:48:07.000Z</published>
+    <updated>2021-03-10T08:41:49.677Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Java的设计模式一共有23中，今天我们说单例模式，单例模式是一种最常见的设计模式，在springmvc中bean的注入使用的就是单例模式。&lt;/p&gt;
+&lt;p&gt;单例模式，只能存在一个实例，并且自己创建自己的对象，这个类提供了一个访问这个对象的唯一方式，可直接访问，不需要通过ne</summary>
+        
+      
+    
+    
+    
+    <category term="编程思想" scheme="http://example.com/categories/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/"/>
+    
+    
+    <category term="设计模式" scheme="http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2021/03/10/hello-world/"/>
+    <id>http://example.com/2021/03/10/hello-world/</id>
+    <published>2021-03-10T01:18:40.084Z</published>
+    <updated>2021-03-10T01:18:40.084Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
