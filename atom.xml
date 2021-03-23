@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-03-23T12:38:45.053Z</updated>
+  <updated>2021-03-23T13:06:07.978Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据库连接池之Druid</title>
+    <link href="http://example.com/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/"/>
+    <id>http://example.com/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/</id>
+    <published>2021-03-23T13:06:07.000Z</published>
+    <updated>2021-03-23T13:06:07.978Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>redis为什么要配置连接池</title>
@@ -47,16 +60,10 @@
     <link href="http://example.com/2021/03/10/%E7%BC%93%E5%AD%98/"/>
     <id>http://example.com/2021/03/10/%E7%BC%93%E5%AD%98/</id>
     <published>2021-03-10T08:40:10.000Z</published>
-    <updated>2021-03-10T08:41:04.680Z</updated>
+    <updated>2021-03-23T12:42:28.720Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;缓存（缓存雪崩，缓存击穿，缓存穿透）&quot;&gt;&lt;a href=&quot;#缓存（缓存雪崩，缓存击穿，缓存穿透）&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;缓存（缓存雪崩，缓存击穿，缓存穿透）&quot;&gt;&lt;a href=&quot;#缓存（缓存雪崩，缓存击穿，缓存穿透）&quot; class=&quot;headerlink&quot; title=&quot;缓存（缓存雪崩，缓存击穿，缓存穿透）&quot;&gt;&lt;/a&gt;缓存（缓存雪崩，缓存击穿，缓存穿透）&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;首先&lt;/strong&gt;，什么是缓存，在计算机中，数据的运行方式是 CPU&amp;gt;内存&amp;gt;储存，所以内存是直接与cpu交流的，最接近CPU的，所以内存的效率是很高的，但是，内存是RAM，也就是说，当机器停机或断电情况下，内存会全部消失。&lt;/p&gt;</summary>
     
     
     
@@ -72,16 +79,17 @@
     <link href="http://example.com/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"/>
     <id>http://example.com/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/</id>
     <published>2021-03-10T08:35:28.000Z</published>
-    <updated>2021-03-10T08:41:28.941Z</updated>
+    <updated>2021-03-23T12:42:18.265Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;装箱-java中将这个机制设置为自动&quot;&gt;&lt;a href=&quot;#装箱-java中将这个机制设置为自动&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;装箱-java中将这个机制设置为自动&quot;&gt;&lt;a href=&quot;#装箱-java中将这个机制设置为自动&quot; class=&quot;headerlink&quot; title=&quot;装箱(java中将这个机制设置为自动)&quot;&gt;&lt;/a&gt;装箱(java中将这个机制设置为自动)&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;装箱的概念为将基本数据类型转换为包装类型&lt;/li&gt;
+&lt;li&gt;构造函数：可用于将基本类型转换为包装器类型&lt;/li&gt;
+&lt;li&gt;valueOf()：可用于将基本类型转换为包装器类型&lt;/li&gt;
+&lt;li&gt;自动装箱&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;int x= 1; Integer y = x;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;public void demo(Integer a){} int x = 1; demo(x);&lt;/p&gt;</summary>
     
     
     
@@ -97,16 +105,11 @@
     <link href="http://example.com/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/"/>
     <id>http://example.com/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/</id>
     <published>2021-03-10T08:28:15.000Z</published>
-    <updated>2021-03-10T08:44:21.280Z</updated>
+    <updated>2021-03-23T12:42:23.031Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;四大特性&quot;&gt;&lt;a href=&quot;#四大特性&quot; class=&quot;headerlink&quot; title=&quot;四大特性&quot;&gt;&lt;/a&gt;四大特性&lt;/h2&gt;&lt;h3 id=&quot;原子性&quot;&gt;&lt;a href=&quot;#原子性&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;四大特性&quot;&gt;&lt;a href=&quot;#四大特性&quot; class=&quot;headerlink&quot; title=&quot;四大特性&quot;&gt;&lt;/a&gt;四大特性&lt;/h2&gt;&lt;h3 id=&quot;原子性&quot;&gt;&lt;a href=&quot;#原子性&quot; class=&quot;headerlink&quot; title=&quot;原子性&quot;&gt;&lt;/a&gt;原子性&lt;/h3&gt;&lt;p&gt;整个操作看成为一个整体，要么成功，要么失败，有一个回滚机制&lt;/p&gt;
+&lt;h3 id=&quot;隔离性&quot;&gt;&lt;a href=&quot;#隔离性&quot; class=&quot;headerlink&quot; title=&quot;隔离性&quot;&gt;&lt;/a&gt;隔离性&lt;/h3&gt;&lt;p&gt;这里涉及到了数据库锁&lt;br&gt;排他锁&lt;br&gt;X锁，写锁&lt;br&gt;共享锁&lt;br&gt;S锁，读锁&lt;br&gt;可能会有多个线程同时访问同一条数据，这样数据库会出现一条数据多方调用，这么做会产生数据的更新丢失，&lt;br&gt;为了压制数据更新丢失，数据库标准提出了四类隔离级别&lt;/p&gt;</summary>
     
     
     
@@ -122,17 +125,11 @@
     <link href="http://example.com/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     <id>http://example.com/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</id>
     <published>2021-03-10T03:48:07.000Z</published>
-    <updated>2021-03-10T08:41:49.677Z</updated>
+    <updated>2021-03-23T12:42:35.733Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;Java的设计模式一共有23中，今天我们说单例模式，单例模式是一种最常见的设计模式，在springmvc中bean的注入使用的就是单例模式。&lt;/p&gt;
-&lt;p&gt;单例模式，只能存在一个实例，并且自己创建自己的对象，这个类提供了一个访问这个对象的唯一方式，可直接访问，不需要通过ne</summary>
-        
-      
+&lt;p&gt;单例模式，只能存在一个实例，并且自己创建自己的对象，这个类提供了一个访问这个对象的唯一方式，可直接访问，不需要通过new来创建一个新的对象，单例模式一共有五种创建方式，下面分别查看这几种方式。&lt;/p&gt;</summary>
     
     
     

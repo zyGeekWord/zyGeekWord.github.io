@@ -142,6 +142,52 @@
     
     
     <article
+  id="post-数据库连接池之Druid"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/"
+    >数据库连接池之Druid</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/" class="article-date">
+  <time datetime="2021-03-23T13:06:07.000Z" itemprop="datePublished">2021-03-23</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+   
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-redis为什么要配置连接池"
   class="article article-type-post"
   itemscope
@@ -226,24 +272,11 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="缓存（缓存雪崩，缓存击穿，缓存穿透）"><a href="#缓存（缓存雪崩，缓存击穿，缓存穿透）" class="headerlink" title="缓存（缓存雪崩，缓存击穿，缓存穿透）"></a>缓存（缓存雪崩，缓存击穿，缓存穿透）</h1><p><strong>首先</strong>，什么是缓存，在计算机中，数据的运行方式是 CPU&gt;内存&gt;储存，所以内存是直接与cpu交流的，最接近CPU的，所以内存的效率是很高的，但是，内存是RAM，也就是说，当机器停机或断电情况下，内存会全部消失。</p>
-<p>在日常开发中我们使用的缓存一般是指redis缓存数据库，redis的细节在此不做讲解，后续会出一篇redis的文章，在此篇文章中主要介绍缓存雪崩，缓存击穿，缓存穿透这三个问题。</p>
-<p> 我们为什么要在项目中添加缓存，直接用数据库查询不好么？一条sql直接搞定，这是我在刚接触到缓存的时候想的问题，为什么呢，首先，缓存有两个主要的用途：<strong>高性能，高并发</strong>，现在是一个高并发的时代，会有很多人同时操作我们的项目，这时，数据库能承受多少的访问量呢？一条sql的select查询需要多久呢？每次我们操作都需要去数据库查询一遍相同的数据是不是重复操作呢？这些重复操作会浪费掉我们多少的性能呢？当有人恶意访问把我们的数据库查崩了会怎么样呢？等等好多的问题，都指向了缓存。</p>
-<p>首先，redis数据库是非关系型数据库，一个key一个value，当我们在项目中加入缓存后，第一个人查询完，第二个人直接去缓存中拿这个数据，不需要再走一遍sql，最简单的例子，一条sql查询某个数据需要300ms，而你将这些数据放入到redis中，下次通过这个key进行查询的时候只需要3ms就可以查询出来。在高并发的情况下，mysql天然支持不是很好，当然也不是非说不可以，假如在我们的项目中，某个时间段，一秒钟有一万个请求，那么单个mysql的项目绝对会垮掉，这时候只要我们加上缓存，把大量的数据都放进缓存中，单个redis就可以轻松支撑每秒几万到几十万的数据，他的承载并发量是mysql的几十倍。</p>
-<p>接下来步入正题，使用缓存后我们会遇到的第一个问题，缓存雪崩，缓存击穿，缓存穿透，这三种最常见的地方就是在电商项目中。</p>
-<h4 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h4><p>缓存雪崩是指，缓存层出现了错误，不能正常工作了。于是所有的请求都会达到存储层，存储层的调用量会暴增，造成存储层也会挂掉的情况。</p>
-<p><strong>场景</strong><br>同一时间下有大量的数据同时失效，这时会对数据库产生庞大的压力<br>双十一十二点，大量用户访问商品，加入商品有效时间为一小时，一点后，所有缓存全部到期，这时就会触发缓存雪崩</p>
-<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p><strong>高可用：</strong> redis主从复制和redis集群，redis 集群有哨兵和Cluster等，此处不做详细讲解</p>
-<p><strong>限流降级：</strong> 这个解决方案的思想是，在缓存失效后，通过加锁或者队列来控制读数据库写缓存的线程数量。比如对某个key只允许一个线程查询数据和写缓存，其他线程等待。</p>
-<p><strong>随机过期时间：</strong> 将缓存的有效时间设置为随机数，每个缓存的失效时间都不相同，这样就可以有效的解决缓存雪崩</p>
-<h4 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h4><p>缓存击穿是指缓存中没有但数据库中有的数据（一般是缓存时间到期），这时由于并发用户特别多，同时读缓存没读到数据，又同时去数据库去取数据，引起数据库压力瞬间增大，造成过大压力</p>
-<p><strong>场景</strong><br>在大数据量的访问时，缓存失效了，这时会有大量请求直接击穿数据库，这就是缓存击穿<br>在淘宝中，一个商品卖成了热卖商品，在热卖的过程中，缓存失效了，这时一瞬间就会触发缓存雪崩问题</p>
-<h5 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h5><p>添加互斥锁</p>
-<p>将热卖商品的缓存过期时间设置为永不过期</p>
-<h4 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h4><p><strong>场景</strong><br>当有人知道当前请求的路径后，多次请求并不存在的数据，这样就会使请求直接穿透到数据库上，导致数据库压力过大<br>一个人恶意请求数据，疯狂发送不存在的数据，这时会产生缓存穿透</p>
-<h5 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h5><p>创建黑名单，将数据库不存在的数据存入到缓存黑名单中，每次访问，如果传参在黑名单中，则将黑名单中信息直接返回给请求者，这样可以避免数据走数据库</p>
-<p>本人也在学习阶段，如有哪里写的有问题欢迎指点，不喜勿喷</p>
- 
+  <h1 id="缓存（缓存雪崩，缓存击穿，缓存穿透）"><a href="#缓存（缓存雪崩，缓存击穿，缓存穿透）" class="headerlink" title="缓存（缓存雪崩，缓存击穿，缓存穿透）"></a>缓存（缓存雪崩，缓存击穿，缓存穿透）</h1><p><strong>首先</strong>，什么是缓存，在计算机中，数据的运行方式是 CPU&gt;内存&gt;储存，所以内存是直接与cpu交流的，最接近CPU的，所以内存的效率是很高的，但是，内存是RAM，也就是说，当机器停机或断电情况下，内存会全部消失。</p> 
+      <a class="article-more-link" href="/2021/03/10/%E7%BC%93%E5%AD%98/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -300,22 +333,13 @@
 <li>构造函数：可用于将基本类型转换为包装器类型</li>
 <li>valueOf()：可用于将基本类型转换为包装器类型</li>
 <li>自动装箱<ul>
-<li>int x= 1; Integer y = x;</li>
-<li>public void demo(Integer a){} int x = 1; demo(x);</li>
-</ul>
+<li><p>int x= 1; Integer y = x;</p>
 </li>
-</ul>
-<h2 id="拆箱-java中将这个机制设置为自动"><a href="#拆箱-java中将这个机制设置为自动" class="headerlink" title="拆箱(java中将这个机制设置为自动)"></a>拆箱(java中将这个机制设置为自动)</h2><ul>
-<li>拆箱的概念为将包装器类型转换成基本数据类型</li>
-<li>byteValue()、shortValue()等xxxValue()方法：可用于将包装器类型转换为基本数据类型</li>
-<li>parseInt()等parseXxx()方法：可用于将String对象转换为基本数据类型</li>
-<li>toString()方法：由Object对象继承而来，用于将包装器类型转换为String类型</li>
-<li>自动拆箱<ul>
-<li>Integer x = new Integer(1); int y = x ;</li>
-</ul>
-</li>
-</ul>
- 
+<li><p>public void demo(Integer a){} int x = 1; demo(x);</p> 
+      <a class="article-more-link" href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -368,15 +392,11 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h2 id="四大特性"><a href="#四大特性" class="headerlink" title="四大特性"></a>四大特性</h2><h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><p>整个操作看成为一个整体，要么成功，要么失败，有一个回滚机制</p>
-<h3 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h3><p>这里涉及到了数据库锁<br>排他锁<br>X锁，写锁<br>共享锁<br>S锁，读锁<br>可能会有多个线程同时访问同一条数据，这样数据库会出现一条数据多方调用，这么做会产生数据的更新丢失，<br>为了压制数据更新丢失，数据库标准提出了四类隔离级别</p>
-<h5 id="未提交读"><a href="#未提交读" class="headerlink" title="未提交读"></a>未提交读</h5><p>未提交读是最低的隔离级别，他允许一个事务读取另一个事务未提交的数据，未提交读是一种非常危险的隔离级别<br><strong>优点</strong><br>并发能力高，适用对数据一致性没有高要求的并发场景<br><strong>缺点</strong><br>会产生脏读<br>脏读的场景为在一条事务未提交时，令一条事务访问了当前事务的数据，但是当前事务数据回滚了，这时，读取到的事务就成为脏读</p>
-<h5 id="读写提交"><a href="#读写提交" class="headerlink" title="读写提交"></a>读写提交</h5><p>在事务A进行的时候，事务B不会读取到事务A的任何数据<br><strong>优点</strong><br>读取事务不需要担心其他事务回滚而产生的脏读数据<br><strong>缺点</strong></p>
-<h5 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h5><p>当数据库数据只剩一个的情况下，事务A先扣除库存，这时事务B也进行扣除库存，因为无法读取事务A的操作，所以事务B判断可以扣除库存，这时事务A提交了数据,之后事务B提交数据就会提交失败，因为此时库存为0无法扣除<br>一般发生在delete和update中</p>
-<h5 id="可重复读"><a href="#可重复读" class="headerlink" title="可重复读"></a>可重复读</h5><p>在一个事务进行操作的时候，其他事务不允许读取当前数据库，要等待当前事务提交后才能进行读取，但是在一个事务中多次查询的结果是一致的<br><strong>优点</strong><br>可以完美的避开不可重复读的问题<br><strong>缺点</strong><br>幻读<br>发生在insert中<br>当事务A中有两条select语句，当执行完第一条select语句口，事务B对数据库进行了操作，添加了一条数据，这时事务A第二条select查看就会发现多了一条之前没有查到的数据<br>在可重复读中，该sql第一次读取到数据后，就将这些数据加锁（悲观锁），其它事务无法修改这些数据，就可以实现可重复读了。但这种方法却无法锁住insert的数据，所以当事务A先前读取了数据，或者修改了全部数据，事务B还是可以insert数据提交，这时事务A就会发现莫名其妙多了一条之前没有的数据，这就是幻读，不能通过行锁来避免。需要Serializable隔离级别 ，读用读锁，写用写锁，读锁和写锁互斥，这么做可以有效的避免幻读、不可重复读、脏读等问题，但会极大的降低数据库的并发能力。<br>解决方案，innodb数据库引擎已经解决当前问题<br>Innodb引入间隙锁</p>
-<h5 id="串行话"><a href="#串行话" class="headerlink" title="串行话"></a>串行话</h5><p>这个是数据库的最高隔离级别，当一个事务执行时，其他事务都要排队，按顺序一个一个的进行<br>缺点<br>会产生数据的冗余</p>
-<h4 id="持久性"><a href="#持久性" class="headerlink" title="持久性"></a>持久性</h4><p>当整个事务执行完毕后，所有数据都会被固化到磁盘中，供长期的访问</p>
-<h4 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h4><p>事务在完成时，必须使所有事务都保持一致</p>
- 
+<h3 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h3><p>这里涉及到了数据库锁<br>排他锁<br>X锁，写锁<br>共享锁<br>S锁，读锁<br>可能会有多个线程同时访问同一条数据，这样数据库会出现一条数据多方调用，这么做会产生数据的更新丢失，<br>为了压制数据更新丢失，数据库标准提出了四类隔离级别</p> 
+      <a class="article-more-link" href="/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -429,47 +449,11 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>Java的设计模式一共有23中，今天我们说单例模式，单例模式是一种最常见的设计模式，在springmvc中bean的注入使用的就是单例模式。</p>
-<p>单例模式，只能存在一个实例，并且自己创建自己的对象，这个类提供了一个访问这个对象的唯一方式，可直接访问，不需要通过new来创建一个新的对象，单例模式一共有五种创建方式，下面分别查看这几种方式。</p>
-<p><strong>单例模式的优点：</strong></p>
-<ol>
-<li>内存中只有一个对象，节省内存空间。</li>
-<li>避免频繁的创建销毁对象，可以提高性能。</li>
-<li>避免对共享资源的多重占用，简化访问。</li>
-<li>为整个系统提供一个全局访问点。</li>
-</ol>
-<p><strong>单例模式的缺点：</strong></p>
-<ol>
-<li>不适用于变化频繁的对象。</li>
-<li>滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为的单例类，可能会导致共享连接池对象的程序过多而出现的链接池溢出。</li>
-<li>如果实例化的对象长时间不被利用，系统会认为该对象时垃圾而被回收，这可能会导致对象状态的丢失。</li>
-</ol>
-<h4 id="1-懒汉式"><a href="#1-懒汉式" class="headerlink" title="1.懒汉式"></a>1.懒汉式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class LanHan&#123;</span><br><span class="line">    private static LanHan lan;</span><br><span class="line">    &#x2F;&#x2F;私有构造器</span><br><span class="line">    private LanHan()&#123;&#125;</span><br><span class="line">    &#x2F;&#x2F;判断，当没有创建过对象的时候才会创建新对象</span><br><span class="line">    public static LanHan getLan()&#123;</span><br><span class="line">        if(lan&#x3D;&#x3D;null)&#123;</span><br><span class="line">            lan &#x3D; new LanHan;</span><br><span class="line">        &#125;</span><br><span class="line">        return lan;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>懒汉式，只有在使用的时候才会创建</p>
-<p><strong>优点：</strong>节省内存空间，只有在真正调用的时候才会实例化对象并调用。</p>
-<p><strong>缺点：</strong>只能在单线程情况下使用，在多线程情况下，一个线程进行if else 判断的时候还没有进行运算完成，接下来的线城也进入判断，这样便会创建了多个实例，违背了单例模式的设计意义，并且，严格意义上来说，懒汉式并不属于单例模式</p>
-<h4 id="2-饿汉式"><a href="#2-饿汉式" class="headerlink" title="2.饿汉式"></a>2.饿汉式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class EHan&#123;</span><br><span class="line">    &#x2F;&#x2F;创建自己的私有静态对象</span><br><span class="line">    private static EHan eh &#x3D; new EHan();</span><br><span class="line">    &#x2F;&#x2F;私有构造器</span><br><span class="line">    private EHan()&#123;&#125;</span><br><span class="line">    &#x2F;&#x2F;返回自己实例的静态公有方法</span><br><span class="line">    public EHan getEH()&#123;</span><br><span class="line">        return en;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>饿汉式，在初始化时已经创建好，不管是否调用</p>
-<p><strong>优点：</strong>在整个生命周期只会被加载一次，只会创建一个实例，这种写法很简单，避免了线程同步的问题</p>
-<p><strong>缺点：</strong>在类装载的时候就完成实例化，如果始终没有调用的话，会浪费内存</p>
-<h4 id="3-双重加锁机制"><a href="#3-双重加锁机制" class="headerlink" title="3.双重加锁机制"></a>3.双重加锁机制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class twoLwtion&#123;</span><br><span class="line">    private static twoLwtion instance;</span><br><span class="line">     private static readonly object syncRoot &#x3D; new object();</span><br><span class="line">        private twoLwtion() &#123; &#125;</span><br><span class="line">        public static twoLwtion GetInstance()</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;先判断是否存在，不存在再加锁处理</span><br><span class="line">            if (instance &#x3D;&#x3D; null)</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;在同一个时刻加了锁的那部分程序只有一个线程可以进入</span><br><span class="line">                lock (syncRoot)</span><br><span class="line">                &#123;</span><br><span class="line">                    if (instance &#x3D;&#x3D; null)</span><br><span class="line">                    &#123;</span><br><span class="line">                        instance &#x3D; new Singleton();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return instance;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>知识点：</strong>lock锁</p>
-<p>Double-Check概念，进行了两次if检测，这样可以保证线程安全，这样实例化代码只用执行一次，后面再次访问时，判断singleton==null直接返回实例化对象</p>
-<p>使用双重检测同步延迟加载去创建单例模式是一种非常优秀的做法，不但保持了单例，还切实提高了程序运行效率</p>
-<p><strong>优点：</strong>线城安全，延迟加载，效率高</p>
-<h4 id="4-静态初始化"><a href="#4-静态初始化" class="headerlink" title="4.静态初始化"></a>4.静态初始化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class staticleton &#123; </span><br><span class="line">    private staticleton()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">      public static staticleton getInstance()&#123;  </span><br><span class="line">        return Inner.instance;  </span><br><span class="line">    &#125;  </span><br><span class="line">    private static class Inner &#123;  </span><br><span class="line">        private static final Singleton instance &#x3D; new Singleton();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>只有第一次调用getInstance方法时，虚拟机才加载 Inner 并初始化instance ，只有一个线程可以获得对象的初始化锁，其他线程无法进行初始化，保证对象的唯一性。目前此方式是所有单例模式中最推荐的模式，但具体还是根据项目选择。</p>
-<p><strong>优点：</strong>利用了classloader机制来保证初始化instance时只有一个线程，线程安全且没有性能损耗</p>
-<h4 id="5-枚举单例模式"><a href="#5-枚举单例模式" class="headerlink" title="5.枚举单例模式"></a>5.枚举单例模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public enum Singleton  &#123;</span><br><span class="line">    INSTANCE </span><br><span class="line"> </span><br><span class="line">    &#x2F;&#x2F;doSomething 该实例支持的行为</span><br><span class="line">      </span><br><span class="line">    &#x2F;&#x2F;可以省略此方法，通过Singleton.INSTANCE进行操作</span><br><span class="line">    public static Singleton get Instance() &#123;</span><br><span class="line">        return Singleton.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>枚举类单例模式是日常开发中比较少用到的单例模式，原因是可读性较差</p>
-<p><strong>优点：</strong>不仅可以解决多线程同步问题，还能有效防止反序列化重新创建新的对象</p>
-<p><strong>缺点：</strong> jdk1.5中加入了enum，不常用，并且可读性差</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>目前来说，比较推荐的是静态内部类单例模式</p>
- 
+<p>单例模式，只能存在一个实例，并且自己创建自己的对象，这个类提供了一个访问这个对象的唯一方式，可直接访问，不需要通过new来创建一个新的对象，单例模式一共有五种创建方式，下面分别查看这几种方式。</p> 
+      <a class="article-more-link" href="/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
