@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-03-10T08:41:04.680Z</updated>
+  <updated>2021-03-23T12:38:45.053Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis为什么要配置连接池</title>
+    <link href="http://example.com/2021/03/23/redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
+    <id>http://example.com/2021/03/23/redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5%E6%B1%A0/</id>
+    <published>2021-03-23T12:25:48.000Z</published>
+    <updated>2021-03-23T12:38:45.053Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;​        昨天面试的时候被问了一个问题，redis效率这么高为什么还要配置连接池，当时蒙了，后来查询原来是这样的。&lt;/p&gt;
+&lt;p&gt;​        </summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>缓存</title>
