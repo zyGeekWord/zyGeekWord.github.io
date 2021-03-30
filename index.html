@@ -142,6 +142,65 @@
     
     
     <article
+  id="post-maven如何使项目打包时排除指定的依赖"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/30/maven%E5%A6%82%E4%BD%95%E4%BD%BF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%97%B6%E6%8E%92%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9A%84%E4%BE%9D%E8%B5%96/"
+    >maven如何使项目打包时排除指定的依赖</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/30/maven%E5%A6%82%E4%BD%95%E4%BD%BF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%97%B6%E6%8E%92%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9A%84%E4%BE%9D%E8%B5%96/" class="article-date">
+  <time datetime="2021-03-30T12:06:51.000Z" itemprop="datePublished">2021-03-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>打包时，需要将项目中的一些依赖排除出去，查询后使用代码如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.netty<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>netty-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.58.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，使用了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此命令行可以使下项目打包时不将该依赖打包进去。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-数据库连接池之Druid"
   class="article article-type-post"
   itemscope
@@ -154,7 +213,7 @@
        
 <h2 itemprop="name">
   <a class="article-title" href="/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/"
-    >数据库连接池之Druid</a> 
+    >数据库连接池之Druid--配置篇</a> 
 </h2>
  
 
@@ -162,13 +221,23 @@
      
     <div class="article-meta">
       <a href="/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/" class="article-date">
-  <time datetime="2021-03-23T13:06:07.000Z" itemprop="datePublished">2021-03-23</time>
-</a>    
+  <time datetime="2021-03-23T13:46:12.000Z" itemprop="datePublished">2021-03-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
+   
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <p>日常开发中数据库是我们都要使用的，使用数据库也就意味着必须建立项目和数据之间的联系，所以我们需要使用数据库连接池，目前我选择使用druid连接池，该连接池是阿里开源的，功能非常强大，最大的特点是可以监控sql和可视化界面，目前各种数据库连接池的特点如下图所示</p>
+<p><img src="https://aaaas.oss-cn-beijing.aliyuncs.com/image-20210330202641268.png" alt="image-20210330202641268"></p>
+<p><strong>步入正题</strong></p> 
+      <a class="article-more-link" href="/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -178,6 +247,8 @@
     
     <footer class="article-footer">
        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
     </footer>
   </div>
 

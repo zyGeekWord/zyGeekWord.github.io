@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-03-23T13:06:07.978Z</updated>
+  <updated>2021-03-30T12:35:26.972Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,15 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>数据库连接池之Druid</title>
+    <title>maven如何使项目打包时排除指定的依赖</title>
+    <link href="http://example.com/2021/03/30/maven%E5%A6%82%E4%BD%95%E4%BD%BF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%97%B6%E6%8E%92%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9A%84%E4%BE%9D%E8%B5%96/"/>
+    <id>http://example.com/2021/03/30/maven%E5%A6%82%E4%BD%95%E4%BD%BF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%97%B6%E6%8E%92%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9A%84%E4%BE%9D%E8%B5%96/</id>
+    <published>2021-03-30T12:06:51.000Z</published>
+    <updated>2021-03-30T12:35:26.972Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;打包时，需要将项目中的一些依赖排除出去，查询后使用代码如下&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库连接池之Druid--配置篇</title>
     <link href="http://example.com/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/"/>
     <id>http://example.com/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/</id>
-    <published>2021-03-23T13:06:07.000Z</published>
-    <updated>2021-03-23T13:06:07.978Z</updated>
+    <published>2021-03-23T13:46:12.000Z</published>
+    <updated>2021-03-30T13:01:48.820Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;日常开发中数据库是我们都要使用的，使用数据库也就意味着必须建立项目和数据之间的联系，所以我们需要使用数据库连接池，目前我选择使用druid连接池，该连接池是阿里开源的，功能非常强大，最大的特点是可以监控sql和可视化界面，目前各种数据库连接池的特点如下图所示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://aaaas.oss-cn-beijing.aliyuncs.com/image-20210330202641268.png&quot; alt=&quot;image-20210330202641268&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;步入正题&lt;/strong&gt;&lt;/p&gt;</summary>
     
     
     
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
     
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
   </entry>
   
