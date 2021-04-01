@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-03-30T12:35:26.972Z</updated>
+  <updated>2021-04-01T15:24:00.077Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>String字符串有没有上限</title>
+    <link href="http://example.com/2021/04/01/String%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%89%E6%B2%A1%E6%9C%89%E4%B8%8A%E9%99%90/"/>
+    <id>http://example.com/2021/04/01/String%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%89%E6%B2%A1%E6%9C%89%E4%B8%8A%E9%99%90/</id>
+    <published>2021-04-01T13:22:47.000Z</published>
+    <updated>2021-04-01T15:24:00.077Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;String字符串到底有没有上限呢？我们通过源码来分析。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;首先&lt;/strong&gt;，我们需要知道String字符串实际是用什么存储的，在jdk1.6中，String是用byte数组存储的，在jdk1.8中，String是用char[]存储的。&lt;/p&gt;
+&lt;p&gt;数组，我们是需要可以设置大小的，数组设置大小有两种方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;[] arr = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;[&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;]; &lt;span class=&quot;comment&quot;&gt;//数组长度为12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt;[] ar = &amp;#123;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;&amp;#125;;   &lt;span class=&quot;comment&quot;&gt;//数组长度为5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;其中，数组长度的定义都为整数，至于为什么是整数类型，我们可以看一下length()这个方法，该方法的返回值是int类型，所以数组长度不可能超过int类型的上限，我们通过Integer的代码中可以看到：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>maven如何使项目打包时排除指定的依赖</title>
