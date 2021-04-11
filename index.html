@@ -142,6 +142,144 @@
     
     
     <article
+  id="post-List集合"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/04/11/List%E9%9B%86%E5%90%88/"
+    >List</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/11/List%E9%9B%86%E5%90%88/" class="article-date">
+  <time datetime="2021-04-11T14:22:12.000Z" itemprop="datePublished">2021-04-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>首先，List集合中有几个子类，分别是ArraryList，Vector，LinkList。下面我先现主要说一下最常用的ArrayList。</p>
+<h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><p>线程不安全，为什么呢？通过源码我们可以看到，它没有加Synchronized线程锁。其次他是<strong>有序</strong>的，查询快，但不利于经常修改的场景。</p>
+<p><strong>原因：</strong></p>
+<p>ArrayList中数据在内存中是连续的成块的，所以查询时候，直接遍历内存即可，插入或者删除时，需要把该节点之后的所有数据全都遍历一遍，为什么说是连续成块的呢？因为ArrayList底层实现为数组。</p>
+<p><img src="I:\blog\source\image-20210411225555431.png" alt="image-20210411225555431"></p>
+<p>ArraryList的扩容机制(自动扩容)</p>
+<p>ArrayList源码中的grow()方法，在ArrayList执行插入时，如果容量不足，会扩容1.5倍</p>
+<p><img src="I:\blog\source\image-20210411230127426.png" alt="image-20210411230127426"></p>
+<p>List的最顶层是Collection类</p>
+<p><img src="I:\blog\source\image-20210411230238064.png" alt="image-20210411230238064"></p>
+<h5 id="ArrayList集合的特点："><a href="#ArrayList集合的特点：" class="headerlink" title="ArrayList集合的特点："></a>ArrayList集合的特点：</h5><ul>
+<li>ArrayList基于数组实现，是一个动态数组，可自动增长</li>
+<li>ArrayList线程不安全，因为没有加锁</li>
+<li>ArrayList实现了serializable接口，因此它支持序列化</li>
+<li>它实现了RandomAccess接口，支持快速随机访问</li>
+<li>实现了Cloneable接口，能被clone</li>
+</ul>
+<h4 id="LinkList"><a href="#LinkList" class="headerlink" title="LinkList"></a>LinkList</h4><p><strong>定义</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stringList = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">List&lt;String&gt; demo = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">List&lt;String&gt; def = <span class="keyword">new</span> LinkedList&lt;&gt;(demo);</span><br><span class="line"><span class="comment">//可以直接传递已有集合</span></span><br></pre></td></tr></table></figure>
+
+<p>LinkList内部使用基于链表的数据结构存储，LinkList有一个内部类作为存放元素的单元，里面有三个属性，用来存放元素本身以及前后两个单元的引用，另外LinkList内部有一个header属性，用来表示起始位置。</p>
+<p>LinkList是采用双向链表实现的，所以它也具有链表的特点，每一个元素的地址不连续，通过引用找到当前节点上的一个节点和下一个节点，即插入和删除效率比较高，而get和set则较为低效</p>
+<p><strong>LinkList的扩容机制：</strong></p>
+<p>它的扩容机制是添加多少增长多少。</p>
+<h4 id="ArrayList和LinkList的区别"><a href="#ArrayList和LinkList的区别" class="headerlink" title="ArrayList和LinkList的区别"></a>ArrayList和LinkList的区别</h4><ul>
+<li>ArrayList是基于动态数组的数据结构，LinkList是基于链表的数据结构。</li>
+<li>对于随机访问元素，ArrayList获取时间复杂度是O(1),但是删除数据确实开销很大的，因为需要重排数组中所有的数据，ArrayList想要get(index)时，直接返回index位置上的元素，而LinkList需要通过for循环进行查找，虽然LinkList已经在查找中做了优化，但还是较慢。</li>
+<li>对于添加或删除操作，add()和remove()，LinkList更快，首先因为LinkList底层是双向链表结构，不需要改变数组大小，也没有自动扩容，这是ArrayList的缺点，它的时间复杂度为O(n),而LinkList的时间复杂度为O(1).ArrayList在插入数据时还需要更新索引，ArrayList在插入或删除时主要好事的是System.arraycopy()动作，它会移动index后面所有的元素，LinkList耗时的是要先通过for循环找到index，然后直接插入或删除，所以无法对比两者谁的性能更好，只能说更合适哪种。</li>
+</ul>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>大部分情况下，ArrayList更受欢迎，但是有些情况下LinkList更优秀。</p>
+<ul>
+<li>当不需要随机读取第n个元素时。</li>
+<li>不需要大量的插入或者删除时</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-HashMap"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/04/11/HashMap/"
+    >HashMap</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/11/HashMap/" class="article-date">
+  <time datetime="2021-04-11T14:22:00.000Z" itemprop="datePublished">2021-04-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+   
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-redis分布式锁"
   class="article article-type-post"
   itemscope
@@ -545,7 +683,7 @@
 
     
     <article
-  id="post-缓存"
+  id="post-Spring框架中，创建对象的三种方式"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -556,16 +694,16 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/03/10/%E7%BC%93%E5%AD%98/"
-    >缓存</a> 
+  <a class="article-title" href="/2021/03/12/Spring%E6%A1%86%E6%9E%B6%E4%B8%AD%EF%BC%8C%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+    >Spring框架中，创建对象的三种方式</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/03/10/%E7%BC%93%E5%AD%98/" class="article-date">
-  <time datetime="2021-03-10T08:40:10.000Z" itemprop="datePublished">2021-03-10</time>
+      <a href="/2021/03/12/Spring%E6%A1%86%E6%9E%B6%E4%B8%AD%EF%BC%8C%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="article-date">
+  <time datetime="2021-03-12T13:14:34.000Z" itemprop="datePublished">2021-03-12</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
@@ -575,74 +713,12 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="缓存（缓存雪崩，缓存击穿，缓存穿透）"><a href="#缓存（缓存雪崩，缓存击穿，缓存穿透）" class="headerlink" title="缓存（缓存雪崩，缓存击穿，缓存穿透）"></a>缓存（缓存雪崩，缓存击穿，缓存穿透）</h1><p><strong>首先</strong>，什么是缓存，在计算机中，数据的运行方式是 CPU&gt;内存&gt;储存，所以内存是直接与cpu交流的，最接近CPU的，所以内存的效率是很高的，但是，内存是RAM，也就是说，当机器停机或断电情况下，内存会全部消失。</p> 
-      <a class="article-more-link" href="/2021/03/10/%E7%BC%93%E5%AD%98/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li></ul>
-
-    </footer>
-  </div>
-
-    
+  <ul>
+<li>无参构造器</li>
+<li>静态工厂</li>
+<li>实例工厂</li>
+</ul>
  
-    
-</article>
-
-    
-    <article
-  id="post-装箱拆箱"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
-    >装箱拆箱</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/" class="article-date">
-  <time datetime="2021-03-10T08:35:28.000Z" itemprop="datePublished">2021-03-10</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="装箱-java中将这个机制设置为自动"><a href="#装箱-java中将这个机制设置为自动" class="headerlink" title="装箱(java中将这个机制设置为自动)"></a>装箱(java中将这个机制设置为自动)</h2><ul>
-<li>装箱的概念为将基本数据类型转换为包装类型</li>
-<li>构造函数：可用于将基本类型转换为包装器类型</li>
-<li>valueOf()：可用于将基本类型转换为包装器类型</li>
-<li>自动装箱<ul>
-<li><p>int x= 1; Integer y = x;</p>
-</li>
-<li><p>public void demo(Integer a){} int x = 1; demo(x);</p> 
-      <a class="article-more-link" href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
-        >阅读更多...</a
-      >
-       
       <!-- reward -->
       
     </div>
@@ -653,63 +729,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-数据库事务"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/"
-    >数据库事务</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/" class="article-date">
-  <time datetime="2021-03-10T08:28:15.000Z" itemprop="datePublished">2021-03-10</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="四大特性"><a href="#四大特性" class="headerlink" title="四大特性"></a>四大特性</h2><h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><p>整个操作看成为一个整体，要么成功，要么失败，有一个回滚机制</p>
-<h3 id="隔离性"><a href="#隔离性" class="headerlink" title="隔离性"></a>隔离性</h3><p>这里涉及到了数据库锁<br>排他锁<br>X锁，写锁<br>共享锁<br>S锁，读锁<br>可能会有多个线程同时访问同一条数据，这样数据库会出现一条数据多方调用，这么做会产生数据的更新丢失，<br>为了压制数据更新丢失，数据库标准提出了四类隔离级别</p> 
-      <a class="article-more-link" href="/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
     </footer>
   </div>
