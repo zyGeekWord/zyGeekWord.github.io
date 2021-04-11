@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-01T15:24:00.077Z</updated>
+  <updated>2021-04-11T12:03:01.970Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis分布式锁</title>
+    <link href="http://example.com/2021/04/11/redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
+    <id>http://example.com/2021/04/11/redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</id>
+    <published>2021-04-11T12:01:48.000Z</published>
+    <updated>2021-04-11T12:03:01.970Z</updated>
+    
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="redis" scheme="http://example.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis集群架构</title>
+    <link href="http://example.com/2021/04/09/redis%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84/"/>
+    <id>http://example.com/2021/04/09/redis%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84/</id>
+    <published>2021-04-09T13:52:44.000Z</published>
+    <updated>2021-04-11T12:00:23.463Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;a先说说是为什么引入的redis集群，在我开发的一个项目中，涉及到了缓存雪崩的问题，当时想到的解决方案是，写一个随机数，随机redis的失效时间，但是，在后续发现了一个问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例如：&lt;/strong&gt;在早上七点我redis随机了三个小时失效，早上八点我又随机了两个小时失效，这种情况下，在早上十点还是会引发雪崩的问题，并且我们无法保证redis宕机后会怎么办，所以引出了今天redis集群的思考，接下来我们先学习一下reids集群的三种模式。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="redis" scheme="http://example.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ConcurrentHashMap(一)</title>
+    <link href="http://example.com/2021/04/09/ConcurrentHashMap-%E4%B8%80/"/>
+    <id>http://example.com/2021/04/09/ConcurrentHashMap-%E4%B8%80/</id>
+    <published>2021-04-09T13:41:18.000Z</published>
+    <updated>2021-04-09T13:52:52.202Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;当我们提到Map集合的时候，我们第一想法都是HashMap和HashTable，但是HashMap和HashTable都有自己的缺点。&lt;/p&gt;
+&lt;p&gt;首先HashMap它跟HashTable比，HashMap因为没有加锁，所以它的效率很高，但同时，它在多线程环境下，它无法保</summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>String字符串有没有上限</title>
@@ -92,15 +155,14 @@
     <link href="http://example.com/2021/03/23/redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5%E6%B1%A0/"/>
     <id>http://example.com/2021/03/23/redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5%E6%B1%A0/</id>
     <published>2021-03-23T12:25:48.000Z</published>
-    <updated>2021-03-30T13:06:56.355Z</updated>
+    <updated>2021-04-09T14:08:49.401Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;​        昨天面试的时候被问了一个问题，redis效率这么高为什么还要配置连接池，当时蒙了，后来查询原来是这样的。&lt;/p&gt;
-&lt;p&gt;​        </summary>
+    <summary type="html">&lt;p&gt;​        </summary>
         
       
     
@@ -109,7 +171,7 @@
     <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    <category term="redis" scheme="http://example.com/tags/redis/"/>
     
   </entry>
   
