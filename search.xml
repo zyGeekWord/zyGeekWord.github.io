@@ -400,12 +400,12 @@
 <h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><p>线程不安全，为什么呢？通过源码我们可以看到，它没有加Synchronized线程锁。其次他是<strong>有序</strong>的，查询快，但不利于经常修改的场景。</p>
 <p><strong>原因：</strong></p>
 <p>ArrayList中数据在内存中是连续的成块的，所以查询时候，直接遍历内存即可，插入或者删除时，需要把该节点之后的所有数据全都遍历一遍，为什么说是连续成块的呢？因为ArrayList底层实现为数组。</p>
-<p><img src="I:\blog\source\image-20210411225555431.png" alt="image-20210411225555431"></p>
+<p><img src="https://aaaas.oss-cn-beijing.aliyuncs.com/image-20210411225555431.png" alt="image-20210411225555431"></p>
 <p>ArraryList的扩容机制(自动扩容)</p>
 <p>ArrayList源码中的grow()方法，在ArrayList执行插入时，如果容量不足，会扩容1.5倍</p>
-<p><img src="I:\blog\source\image-20210411230127426.png" alt="image-20210411230127426"></p>
+<p><img src="https://aaaas.oss-cn-beijing.aliyuncs.com/image-20210411230127426.png" alt="image-20210411230127426"></p>
 <p>List的最顶层是Collection类</p>
-<p><img src="I:\blog\source\image-20210411230238064.png" alt="image-20210411230238064"></p>
+<p><img src="https://aaaas.oss-cn-beijing.aliyuncs.com/image-20210411230238064.png" alt="image-20210411230238064"></p>
 <h5 id="ArrayList集合的特点："><a href="#ArrayList集合的特点：" class="headerlink" title="ArrayList集合的特点："></a>ArrayList集合的特点：</h5><ul>
 <li>ArrayList基于数组实现，是一个动态数组，可自动增长</li>
 <li>ArrayList线程不安全，因为没有加锁</li>
