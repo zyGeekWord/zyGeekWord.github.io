@@ -398,6 +398,8 @@
     <url>/2021/04/11/List%E9%9B%86%E5%90%88/</url>
     <content><![CDATA[<p>首先，List集合中有几个子类，分别是ArraryList，Vector，LinkList。下面我先现主要说一下最常用的ArrayList。</p>
 <h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><p>线程不安全，为什么呢？通过源码我们可以看到，它没有加Synchronized线程锁。其次他是<strong>有序</strong>的，查询快，但不利于经常修改的场景。</p>
+<span id="more"></span>
+
 <p><strong>原因：</strong></p>
 <p>ArrayList中数据在内存中是连续的成块的，所以查询时候，直接遍历内存即可，插入或者删除时，需要把该节点之后的所有数据全都遍历一遍，为什么说是连续成块的呢？因为ArrayList底层实现为数组。</p>
 <p><img src="https://aaaas.oss-cn-beijing.aliyuncs.com/image-20210411225555431.png" alt="image-20210411225555431"></p>

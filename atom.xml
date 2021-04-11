@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-11T15:35:45.386Z</updated>
+  <updated>2021-04-11T15:41:49.546Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="http://example.com/2021/04/11/List%E9%9B%86%E5%90%88/"/>
     <id>http://example.com/2021/04/11/List%E9%9B%86%E5%90%88/</id>
     <published>2021-04-11T14:22:12.000Z</published>
-    <updated>2021-04-11T15:35:45.386Z</updated>
+    <updated>2021-04-11T15:41:49.546Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;首先，List集合中有几个子类，分别是ArraryList，Vector，LinkList。下面我先现主要说一下最常用的ArrayList。&lt;/p&gt;
-&lt;h4 id=&quot;ArrayList&quot;&gt;&lt;a href=&quot;#ArrayList&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+&lt;h4 id=&quot;ArrayList&quot;&gt;&lt;a href=&quot;#ArrayList&quot; class=&quot;headerlink&quot; title=&quot;ArrayList&quot;&gt;&lt;/a&gt;ArrayList&lt;/h4&gt;&lt;p&gt;线程不安全，为什么呢？通过源码我们可以看到，它没有加Synchronized线程锁。其次他是&lt;strong&gt;有序&lt;/strong&gt;的，查询快，但不利于经常修改的场景。&lt;/p&gt;</summary>
     
     
     
