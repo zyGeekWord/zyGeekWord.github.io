@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-18T15:23:43.868Z</updated>
+  <updated>2021-04-18T15:32:04.200Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>单链表</title>
+    <link href="http://example.com/2021/04/18/%E5%8D%95%E9%93%BE%E8%A1%A8/"/>
+    <id>http://example.com/2021/04/18/%E5%8D%95%E9%93%BE%E8%A1%A8/</id>
+    <published>2021-04-18T15:32:04.000Z</published>
+    <updated>2021-04-18T15:32:04.200Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Volatile</title>
@@ -36,6 +49,32 @@
     
     
     <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis持久化</title>
+    <link href="http://example.com/2021/04/17/redis%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+    <id>http://example.com/2021/04/17/redis%E6%8C%81%E4%B9%85%E5%8C%96/</id>
+    <published>2021-04-17T15:25:53.000Z</published>
+    <updated>2021-04-18T15:29:36.541Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;redis，缓存类型数据库，高效，单线程，这是我们对redis的第一印象，但是redis，数据存储在缓存中，当突然宕机或者redis重启了，这些数据怎么办？&lt;/p&gt;
+&lt;p&gt;由此，引出我们接下来的话题，redis，持久化，redis为了防止数据丢失，提出了两套方案，RDB和A</summary>
+        
+      
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="redis" scheme="http://example.com/tags/redis/"/>
     
   </entry>
   
@@ -210,19 +249,10 @@
     <link href="http://example.com/2021/03/12/HashMap/"/>
     <id>http://example.com/2021/03/12/HashMap/</id>
     <published>2021-03-12T14:22:00.000Z</published>
-    <updated>2021-04-18T14:18:21.290Z</updated>
+    <updated>2021-04-18T15:25:16.851Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我们在日常使用中，最常见的Map集合就是HashMap，但HashMap的存储结构是什么样的，这个在初学的时候很少会有人思考。下面我们便开始深入了解HashMap集合。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;数据结构：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;HashMap是一</summary>
-        
-      
+    <summary type="html">&lt;p&gt;我们在日常使用中，最常见的Map集合就是HashMap，但HashMap的存储结构是什么样的，这个在初学的时候很少会有人思考。下面我们便开始深入了解HashMap集合。&lt;/p&gt;</summary>
     
     
     

@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    redis分布式锁 |  爱吃猫粮的哈士奇的个人博客
+    单链表 |  爱吃猫粮的哈士奇的个人博客
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -41,7 +41,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-redis分布式锁"
+  id="post-单链表"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -52,26 +52,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  redis分布式锁
+  单链表
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/04/11/redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" class="article-date">
-  <time datetime="2021-04-11T12:01:48.000Z" itemprop="datePublished">2021-04-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
-  </div>
-  
+      <a href="/2021/04/18/%E5%8D%95%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2021-04-18T15:32:04.000Z" itemprop="datePublished">2021-04-18</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">994</span>
+            <span class="post-count">0</span>
         </span>
     </span>
 
@@ -80,37 +76,20 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h4 id="首先redis锁要解决什么？-内含本人使用思考"><a href="#首先redis锁要解决什么？-内含本人使用思考" class="headerlink" title="首先redis锁要解决什么？(内含本人使用思考)"></a>首先redis锁要解决什么？(内含本人使用思考)</h4><ul>
-<li>互斥性：任意时刻只能有一个客户端获取锁，不能同时有两个客户端获取到锁；</li>
-<li>安全性：锁只能被持有的客户端删除，不能由其他客户端删除；</li>
-<li>死锁：获取锁的客户端因为某些原因而宕机而未能释放锁，其他客户端再也无法获取到该锁导致的死锁，此时需要有机制来避免问题的发生；</li>
-<li>容错：当部分节点如redis某些节点宕机时，客户端仍然能够获取锁和释放锁</li>
-</ul>
-<span id="more"></span>
-
-<h4 id="SETNX-key-value"><a href="#SETNX-key-value" class="headerlink" title="SETNX key value"></a>SETNX key value</h4><p>如果key不存在，则创建并赋值（set if not exist）<br>时间复杂度：O(1)<br>返回值：设置成功，返回1；设置失败，返回0</p>
-<p>setnx是原子性的，初期时候被人们用来实现分布式锁。在执行某段代码时候可以先尝试使用setnx，为某个key设值。如果设置成功，则证明此时没有别的线程在执行该段代码，或者说占用该独占资源，这个时候我们线程就可以顺利地去执行该段代码逻辑，如果设置失败，则证明此时有别的程序或者线程占用该资源。那么当前线程就需要等待，直至setnx成功。</p>
-<h4 id="EXPIRE-key-seconds"><a href="#EXPIRE-key-seconds" class="headerlink" title="EXPIRE key seconds"></a>EXPIRE key seconds</h4><p>为给定key设置生存时间，当key过期时（生存时间为0），会被自动删除<br>缺点：原子性得不到满足<br>假设setnx执行成功后就直接宕机，来不及expire，此时key就会被一直占用着，意味着其他线程永远也执行不了独占的资源逻辑了，这样就违背了利用redis操作的原子性。</p>
-<h4 id="SET-key-value-EX-seconds-PX-milliseconds-NX-XX"><a href="#SET-key-value-EX-seconds-PX-milliseconds-NX-XX" class="headerlink" title="SET key value [EX seconds] [PX milliseconds] [NX|XX]"></a>SET key value [EX seconds] [PX milliseconds] [NX|XX]</h4><p>EX second：设置键的过期时间为second秒<br>PX millisecond：设置键的过期时间为millisecond毫秒<br>NX：只在键不存在时，才对键进行设置操作<br>XX：只在键已经存在时，才对键进行设置操作<br>SET操作成功完成时，返回OK，否则返回(nil)</p>
-<h4 id="大量的key同时过期的注意事项："><a href="#大量的key同时过期的注意事项：" class="headerlink" title="大量的key同时过期的注意事项："></a>大量的key同时过期的注意事项：</h4><p>如果大量的key过期时间设置的过于集中，到过期的时间点，由于删除key是需要时间的，redis可能会因为一次性大量删除key出现短暂卡顿现象，面对这种情况解决方法为：在设置key的过期时间上加一个随机值，使过期时间分散一些，这样可在很大程度上避免卡顿的发生。</p>
-<h5 id="本人项目中应用事件"><a href="#本人项目中应用事件" class="headerlink" title="本人项目中应用事件"></a>本人项目中应用事件</h5><p>需求如下，项目中，有一个api是生成一个excel表格，每个user只能生成一次excel，但是，当有两个人，用同一个user请求api时，会生成两次excel，此时我的解决方案是，使用redis，通过将key设置为userId，每次请求前，先查看redis中是否有此key，如果有，则返回生成中，如果没有，则SET一个key设置失效时间并向下进行，待完成后，DELETE此key。但是此方法有一个致命的问题，当进程a先锁住后，生成过程中遇到了问题，进程卡住，当失效时间达到后，锁失效，进程B就会开始执行，当进程B执行一半后，进程A执行完毕，数据生成成功，将状态修改为已生成，此时因为redis中还有跟他一样的key，所以删除锁，这时，进程B运行完成，但却发现状态已经被修改，此时会触发报错。</p>
-<p>想到的解决方案是，在vaue中存一个uuid，每次生成key之前生成一个uuid，存入value中，当运行结束后，先判断redis中是否有当前的key，如果有的话，则对比value中uuid是否为自己的uuid，如果不是，则本次逻辑作废，返回生成失败，反之成功。</p>
- 
+   
       <!-- reward -->
       
     </div>
@@ -174,32 +153,21 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/04/11/redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/04/18/%E5%8D%95%E9%93%BE%E8%A1%A8/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2021/04/17/redis%E6%8C%81%E4%B9%85%E5%8C%96/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            redis持久化
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/04/09/redis%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84/" class="article-nav-link">
+      <a href="/2021/04/18/Volatile/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">redis集群架构</div>
+        <div class="article-nav-title">Volatile</div>
       </a>
     
   </nav>

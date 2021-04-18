@@ -371,6 +371,8 @@
     <title>HashMap</title>
     <url>/2021/03/12/HashMap/</url>
     <content><![CDATA[<p>我们在日常使用中，最常见的Map集合就是HashMap，但HashMap的存储结构是什么样的，这个在初学的时候很少会有人思考。下面我们便开始深入了解HashMap集合。</p>
+<span id="more"></span>
+
 <p><strong>数据结构：</strong></p>
 <ul>
 <li>HashMap是一个数组+链表+红黑树的结构组成。</li>
@@ -558,5 +560,23 @@
       <tags>
         <tag>Java</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>redis持久化</title>
+    <url>/2021/04/17/redis%E6%8C%81%E4%B9%85%E5%8C%96/</url>
+    <content><![CDATA[<p>redis，缓存类型数据库，高效，单线程，这是我们对redis的第一印象，但是redis，数据存储在缓存中，当突然宕机或者redis重启了，这些数据怎么办？</p>
+<p>由此，引出我们接下来的话题，redis，持久化，redis为了防止数据丢失，提出了两套方案，RDB和AOF两种持久化方式，下面我们对这两种持久化方式的实现和使用进行深入了解。</p>
+]]></content>
+      <categories>
+        <category>日常学习</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单链表</title>
+    <url>/2021/04/18/%E5%8D%95%E9%93%BE%E8%A1%A8/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
