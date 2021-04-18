@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-18T12:23:49.684Z</updated>
+  <updated>2021-04-18T15:23:43.868Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,11 +21,21 @@
     <link href="http://example.com/2021/04/18/Volatile/"/>
     <id>http://example.com/2021/04/18/Volatile/</id>
     <published>2021-04-18T12:23:49.000Z</published>
-    <updated>2021-04-18T12:23:49.684Z</updated>
+    <updated>2021-04-18T15:23:43.868Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;单例模式中，有一个双重锁模式，双重锁模式中应用到了此关键字，接下来我们对volatile的工作方式进行查看。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;volatile写理解：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当写一个volatile变量时，JMM会把该线程对应的本地中的共享变量值刷新到主内存。&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
     
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
   </entry>
   
