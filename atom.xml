@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-11T15:41:49.546Z</updated>
+  <updated>2021-04-18T12:23:49.684Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,39 +17,15 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>List</title>
-    <link href="http://example.com/2021/04/11/List%E9%9B%86%E5%90%88/"/>
-    <id>http://example.com/2021/04/11/List%E9%9B%86%E5%90%88/</id>
-    <published>2021-04-11T14:22:12.000Z</published>
-    <updated>2021-04-11T15:41:49.546Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;首先，List集合中有几个子类，分别是ArraryList，Vector，LinkList。下面我先现主要说一下最常用的ArrayList。&lt;/p&gt;
-&lt;h4 id=&quot;ArrayList&quot;&gt;&lt;a href=&quot;#ArrayList&quot; class=&quot;headerlink&quot; title=&quot;ArrayList&quot;&gt;&lt;/a&gt;ArrayList&lt;/h4&gt;&lt;p&gt;线程不安全，为什么呢？通过源码我们可以看到，它没有加Synchronized线程锁。其次他是&lt;strong&gt;有序&lt;/strong&gt;的，查询快，但不利于经常修改的场景。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HashMap</title>
-    <link href="http://example.com/2021/04/11/HashMap/"/>
-    <id>http://example.com/2021/04/11/HashMap/</id>
-    <published>2021-04-11T14:22:00.000Z</published>
-    <updated>2021-04-11T14:32:04.531Z</updated>
+    <title>Volatile</title>
+    <link href="http://example.com/2021/04/18/Volatile/"/>
+    <id>http://example.com/2021/04/18/Volatile/</id>
+    <published>2021-04-18T12:23:49.000Z</published>
+    <updated>2021-04-18T12:23:49.684Z</updated>
     
     
     
     
-    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
   </entry>
   
@@ -220,6 +196,34 @@
   </entry>
   
   <entry>
+    <title>HashMap</title>
+    <link href="http://example.com/2021/03/12/HashMap/"/>
+    <id>http://example.com/2021/03/12/HashMap/</id>
+    <published>2021-03-12T14:22:00.000Z</published>
+    <updated>2021-04-18T14:18:21.290Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我们在日常使用中，最常见的Map集合就是HashMap，但HashMap的存储结构是什么样的，这个在初学的时候很少会有人思考。下面我们便开始深入了解HashMap集合。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据结构：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HashMap是一</summary>
+        
+      
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring框架中，创建对象的三种方式</title>
     <link href="http://example.com/2021/03/12/Spring%E6%A1%86%E6%9E%B6%E4%B8%AD%EF%BC%8C%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
     <id>http://example.com/2021/03/12/Spring%E6%A1%86%E6%9E%B6%E4%B8%AD%EF%BC%8C%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</id>
@@ -267,6 +271,26 @@
 &lt;li&gt;调用对象clone()，注意clone()</summary>
         
       
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>List</title>
+    <link href="http://example.com/2021/03/11/List%E9%9B%86%E5%90%88/"/>
+    <id>http://example.com/2021/03/11/List%E9%9B%86%E5%90%88/</id>
+    <published>2021-03-11T14:22:12.000Z</published>
+    <updated>2021-04-12T12:51:38.772Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;首先，List集合中有几个子类，分别是ArraryList，Vector，LinkList。下面我先现主要说一下最常用的ArrayList。&lt;/p&gt;
+&lt;h4 id=&quot;ArrayList&quot;&gt;&lt;a href=&quot;#ArrayList&quot; class=&quot;headerlink&quot; title=&quot;ArrayList&quot;&gt;&lt;/a&gt;ArrayList&lt;/h4&gt;&lt;p&gt;线程不安全，为什么呢？通过源码我们可以看到，它没有加Synchronized线程锁。其次他是&lt;strong&gt;有序&lt;/strong&gt;的，查询快，但不利于经常修改的场景。&lt;/p&gt;</summary>
     
     
     
@@ -347,7 +371,7 @@
     <link href="http://example.com/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     <id>http://example.com/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</id>
     <published>2021-03-10T03:48:07.000Z</published>
-    <updated>2021-03-23T12:42:35.733Z</updated>
+    <updated>2021-04-18T14:27:14.320Z</updated>
     
     
     <summary type="html">&lt;p&gt;Java的设计模式一共有23中，今天我们说单例模式，单例模式是一种最常见的设计模式，在springmvc中bean的注入使用的就是单例模式。&lt;/p&gt;
