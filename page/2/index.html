@@ -142,6 +142,176 @@
     
     
     <article
+  id="post-maven如何使项目打包时排除指定的依赖"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/30/maven%E5%A6%82%E4%BD%95%E4%BD%BF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%97%B6%E6%8E%92%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9A%84%E4%BE%9D%E8%B5%96/"
+    >maven如何使项目打包时排除指定的依赖</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/30/maven%E5%A6%82%E4%BD%95%E4%BD%BF%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E6%97%B6%E6%8E%92%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9A%84%E4%BE%9D%E8%B5%96/" class="article-date">
+  <time datetime="2021-03-30T12:06:51.000Z" itemprop="datePublished">2021-03-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>打包时，需要将项目中的一些依赖排除出去，查询后使用代码如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.netty<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>netty-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.58.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，使用了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此命令行可以使下项目打包时不将该依赖打包进去。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-数据库连接池之Druid"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/"
+    >数据库连接池之Druid--配置篇</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/" class="article-date">
+  <time datetime="2021-03-23T13:46:12.000Z" itemprop="datePublished">2021-03-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>日常开发中数据库是我们都要使用的，使用数据库也就意味着必须建立项目和数据之间的联系，所以我们需要使用数据库连接池，目前我选择使用druid连接池，该连接池是阿里开源的，功能非常强大，最大的特点是可以监控sql和可视化界面，目前各种数据库连接池的特点如下图所示</p>
+<p><img src="https://aaaas.oss-cn-beijing.aliyuncs.com/image-20210330202641268.png" alt="image-20210330202641268"></p>
+<p><strong>步入正题</strong></p> 
+      <a class="article-more-link" href="/2021/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%E4%B9%8BDruid/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-redis为什么要配置连接池"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/03/23/redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5%E6%B1%A0/"
+    >redis为什么要配置连接池</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/03/23/redis%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5%E6%B1%A0/" class="article-date">
+  <time datetime="2021-03-23T12:25:48.000Z" itemprop="datePublished">2021-03-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​         redis以高性能著称，但是我们在日常使用中，需要将项目和redis进行连接操作，并且也会有redis和项目不在一个服务器中的情况，当我们调用redis时，假如耗时30ms，那么redis的响应和处理时间有可能才占1ms，剩下的29ms全都是链接所消耗的时间，所以，我们配置连接池，连接池中会一直保持几个链接，当项目需要时直接调用，节省连接时间，提升性能</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-HashMap"
   class="article article-type-post"
   itemscope
@@ -545,70 +715,13 @@
 </article>
 
     
-    <article
-  id="post-单例模式"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
-    >单例模式</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time datetime="2021-03-10T03:48:07.000Z" itemprop="datePublished">2021-03-10</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/">编程思想</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Java的设计模式一共有23中，今天我们说单例模式，单例模式是一种最常见的设计模式，在springmvc中bean的注入使用的就是单例模式。</p>
-<p>单例模式，只能存在一个实例，并且自己创建自己的对象，这个类提供了一个访问这个对象的唯一方式，可直接访问，不需要通过new来创建一个新的对象，单例模式一共有五种创建方式，下面分别查看这几种方式。</p> 
-      <a class="article-more-link" href="/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
   
 </section>
