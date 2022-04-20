@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-13T01:32:25.319Z</updated>
+  <updated>2022-04-20T01:12:31.003Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,16 +21,19 @@
     <link href="http://example.com/2022/04/12/mysql%E5%9B%9E%E8%A1%A8/"/>
     <id>http://example.com/2022/04/12/mysql%E5%9B%9E%E8%A1%A8/</id>
     <published>2022-04-12T12:28:19.000Z</published>
-    <updated>2022-04-13T01:32:25.319Z</updated>
+    <updated>2022-04-20T01:12:31.003Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Mysql回表&quot;&gt;&lt;a href=&quot;#Mysql回表&quot; class=&quot;headerlink&quot; title=&quot;Mysql回表&quot;&gt;&lt;/a&gt;Mysql回表&lt;/h1&gt;&lt;h2 id=&quot;首先我们要先了解什么是聚簇索引和非聚簇索引&quot;&gt;&lt;a</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;Mysql回表&quot;&gt;&lt;a href=&quot;#Mysql回表&quot; class=&quot;headerlink&quot; title=&quot;Mysql回表&quot;&gt;&lt;/a&gt;Mysql回表&lt;/h1&gt;&lt;h2 id=&quot;首先我们要先了解什么是聚簇索引和非聚簇索引&quot;&gt;&lt;a href=&quot;#首先我们要先了解什么是聚簇索引和非聚簇索引&quot; class=&quot;headerlink&quot; title=&quot;首先我们要先了解什么是聚簇索引和非聚簇索引&quot;&gt;&lt;/a&gt;首先我们要先了解什么是聚簇索引和非聚簇索引&lt;/h2&gt;&lt;p&gt;在本文中，我们使用的都是mysql的Innodb存储引擎&lt;/p&gt;
+&lt;h3 id=&quot;聚簇索引&quot;&gt;&lt;a href=&quot;#聚簇索引&quot; class=&quot;headerlink&quot; title=&quot;聚簇索引&quot;&gt;&lt;/a&gt;聚簇索引&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;如果表设置了主键，则主键就是聚簇索引&lt;/li&gt;
+&lt;li&gt;如果表没有主键，则会默认第一个NOT NULL，且唯一（UNIQUE）的列作为聚簇索引&lt;/li&gt;
+&lt;li&gt;以上都没有，则会默认创建一个隐藏的row_id作为聚簇索引&lt;blockquote&gt;
+&lt;p&gt;InnoDB的聚簇索引的叶子节点存储的是行记录（其实是页结构，一个页包含多行数据），InnoDB必须要有至少一个聚簇索引。&lt;br&gt;由此可见，使用聚簇索引查询会很快，因为可以直接定位到行记录&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt; 找到了索引就找到了需要的数据，那么这个索引就是聚簇索引，所以主键就是聚簇索引，修改聚簇索引其实就是修改主键。&lt;/p&gt;</summary>
     
     
     

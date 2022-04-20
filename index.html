@@ -212,50 +212,11 @@
 </blockquote>
 </li>
 </ul>
-<p><strong>总结：</strong> 找到了索引就找到了需要的数据，那么这个索引就是聚簇索引，所以主键就是聚簇索引，修改聚簇索引其实就是修改主键。</p>
-<h3 id="非聚簇索引"><a href="#非聚簇索引" class="headerlink" title="非聚簇索引"></a>非聚簇索引</h3><ul>
-<li>就是普通索引</li>
-<li>索引的存储和数据的存储是分离的，也就是说找到了索引但没找到数据，需要根据索引上的值(主键)再次回表查询,非聚簇索引也叫做辅助索引。</li>
-</ul>
-<h5 id="如下是普通索引的结构"><a href="#如下是普通索引的结构" class="headerlink" title="如下是普通索引的结构"></a>如下是普通索引的结构</h5><ul>
-<li>其子节点上存储了聚簇索引的值<br><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702e72ac4e50ce0~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp"><h5 id="如下是聚簇索引的结构"><a href="#如下是聚簇索引的结构" class="headerlink" title="如下是聚簇索引的结构"></a>如下是聚簇索引的结构</h5></li>
-<li>其子结点上存储的是对应数据<blockquote>
-<p>如果查询条件为主键（聚簇索引），则只需扫描一次B+树即可通过聚簇索引定位到要查找的行记录数据。<br>如：select * from user where id = 1;<br><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702e72ac12c1c70~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp"></p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>如果查询条件为普通索引（非聚簇索引），需要扫描两次B+树，第一次扫描通过普通索引定位到聚簇索引的值，然后第二次扫描通过聚簇索引的值定位到要查找的行记录数据。 如：select * from user where age = 30;</p>
-</blockquote>
-<p><strong>流程为：</strong> </p>
-<ol>
-<li>先通过普通索引 age=30 定位到主键值 id=1</li>
-<li>再通过聚集索引 id=1 定位到行记录数据</li>
-</ol>
-<p><strong>普通查询第一步</strong><br><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702e72abff3fce7~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp"></p>
-<p><strong>普通查询第二步</strong><br><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702e72ac17d1967~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp"></p>
-<h2 id="回表查询"><a href="#回表查询" class="headerlink" title="回表查询"></a>回表查询</h2><p>我们通过普通索引查询的时候就触发了回表查询像上图所画的那样</p>
-<blockquote>
-<p>先通过普通索引的值定位聚簇索引值，再通过聚簇索引的值定位行记录数据，需要扫描两次索引B+树，它的性能较扫一遍索引树更低。</p>
-</blockquote>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><strong>索引覆盖</strong></p>
-<blockquote>
-<p>只需要在一棵索引树上就能获取SQL所需的所有列数据，无需回表，速度更快。<br>例如：select id,age from user where age = 10;</p>
-</blockquote>
-<p><strong>如何实现覆盖索引</strong></p>
-<blockquote>
-<p>常见的方法是：将被查询的字段，建立到联合索引里去。</p>
-<p>1、如实现：select id,age from user where age = 10;<br>explain分析：因为age是普通索引，使用到了age索引，通过一次扫描B+树即可查询到相应的结果，这样就实现了覆盖索引</p>
-</blockquote>
-<blockquote>
-<p>2、实现：select id,age,name from user where age = 10;<br>explain分析：age是普通索引，但name列不在索引树上，所以通过age索引在查询到id和age的值后，需要进行回表再查询name的值。此时的Extra列的NULL表示进行了回表查询</p>
-</blockquote>
-<p>为了实现索引覆盖，需要建组合索引idx_age_name(age,name)</p>
-<p><code>drop index idx_age on user;</code><br><code>create index idx_age_name on user(</code>age<code>,</code>name<code>);</code></p>
-<blockquote>
-<p>explain分析：此时字段age和name是组合索引idx_age_name，查询的字段id、age、name的值刚刚都在索引树上，只需扫描一次组合索引B+树即可，这就是实现了索引覆盖，此时的Extra字段为Using index表示使用了索引覆盖。</p>
-</blockquote>
- 
+<p><strong>总结：</strong> 找到了索引就找到了需要的数据，那么这个索引就是聚簇索引，所以主键就是聚簇索引，修改聚簇索引其实就是修改主键。</p> 
+      <a class="article-more-link" href="/2022/04/12/mysql%E5%9B%9E%E8%A1%A8/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
