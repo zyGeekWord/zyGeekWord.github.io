@@ -692,4 +692,29 @@
         <tag>mysql</tag>
       </tags>
   </entry>
+  <entry>
+    <title>synchronized的实现原理与应用</title>
+    <url>/2022/05/05/synchronized/</url>
+    <content><![CDATA[<p>synchronized是Java中一个元老级别的角色，我们都叫他重量级锁，但是随着jdk1.6对其进行了各种优化后，它在一些情况下就不是那么重了。</p>
+<p>先看一下synchronized实现我们代码同步的基础：Java中每个对象都可以作为锁。具体表现为如下三种格式：</p>
+<ul>
+<li><p>对于普通方法，锁是当前实例对象</p>
+</li>
+<li><p>对于静态方法，锁是当前类的Class对象</p>
+</li>
+<li><p>对于同步代码块，锁是阔号内配置的对象</p>
+</li>
+</ul>
+<p>当一个线程试图访问同步代码块时，它必须先拿到锁，退出时或者抛出异常时必须释放锁，但是<strong>锁</strong>到底存在哪里呢，锁里存储的是什么信息呢？</p>
+<p>这里我们要引入Monitor这个对象()</p>
+<p>JVM基于进入和退出Monitor对象来实现方法同步和代码块同步，但是两者的实现细节不一样。代码块同步时是使用monitorenter和monitorexit指令实现的，而方法同步是使用另外一种方法实现的，细节再JVM规范中并没有详细说明，后续补充。但是方法同步同样是可以使用这两个指令实现。</p>
+<p>monitorenter指令是在编译后插入到同步代码块的开始位置，而monitorexit是插入到代码的结束位置和抛出异常处。JVM要保整每个monitorenter必须有对应的monitorexit与之配对。任何对象都有一个monitor与之关联，当且一个monitor被持有后，它将处于锁定状态，只有当执行完monitorexit时才会解除锁定。线程执行到monitorenter指令时，将会尝试获取对象所对应的monitor的所有权，即尝试获取对象的锁。</p>
+]]></content>
+      <categories>
+        <category>日常学习</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
 </search>

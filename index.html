@@ -172,6 +172,73 @@
     
     
     <article
+  id="post-synchronized"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/05/05/synchronized/"
+    >synchronized的实现原理与应用</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/05/05/synchronized/" class="article-date">
+  <time datetime="2022-05-05T08:43:43.000Z" itemprop="datePublished">2022-05-05</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>synchronized是Java中一个元老级别的角色，我们都叫他重量级锁，但是随着jdk1.6对其进行了各种优化后，它在一些情况下就不是那么重了。</p>
+<p>先看一下synchronized实现我们代码同步的基础：Java中每个对象都可以作为锁。具体表现为如下三种格式：</p>
+<ul>
+<li><p>对于普通方法，锁是当前实例对象</p>
+</li>
+<li><p>对于静态方法，锁是当前类的Class对象</p>
+</li>
+<li><p>对于同步代码块，锁是阔号内配置的对象</p>
+</li>
+</ul>
+<p>当一个线程试图访问同步代码块时，它必须先拿到锁，退出时或者抛出异常时必须释放锁，但是<strong>锁</strong>到底存在哪里呢，锁里存储的是什么信息呢？</p>
+<p>这里我们要引入Monitor这个对象()</p>
+<p>JVM基于进入和退出Monitor对象来实现方法同步和代码块同步，但是两者的实现细节不一样。代码块同步时是使用monitorenter和monitorexit指令实现的，而方法同步是使用另外一种方法实现的，细节再JVM规范中并没有详细说明，后续补充。但是方法同步同样是可以使用这两个指令实现。</p>
+<p>monitorenter指令是在编译后插入到同步代码块的开始位置，而monitorexit是插入到代码的结束位置和抛出异常处。JVM要保整每个monitorenter必须有对应的monitorexit与之配对。任何对象都有一个monitor与之关联，当且一个monitor被持有后，它将处于锁定状态，只有当执行完monitorexit时才会解除锁定。线程执行到monitorenter指令时，将会尝试获取对象所对应的monitor的所有权，即尝试获取对象的锁。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-mysql回表"
   class="article article-type-post"
   itemscope
@@ -685,61 +752,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-ConcurrentHashMap-一"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/09/ConcurrentHashMap-%E4%B8%80/"
-    >ConcurrentHashMap(一)</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/04/09/ConcurrentHashMap-%E4%B8%80/" class="article-date">
-  <time datetime="2021-04-09T13:41:18.000Z" itemprop="datePublished">2021-04-09</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>当我们提到Map集合的时候，我们第一想法都是HashMap和HashTable，但是HashMap和HashTable都有自己的缺点。</p>
-<p>首先HashMap它跟HashTable比，HashMap因为没有加锁，所以它的效率很高，但同时，它在多线程环境下，它无法保证数据同步，反之HashTable加了锁，但是同时也使它的效率降低，所以，在jdk1.5中加入了ConcurrentHashMap，但是ConcurrentHashMap发扬光大的还是在jdk1.7和1.8版本中，这两个版本的ConcurrentHashMap有着非常巨大的区别，本章我们先初步介绍这两个版本的ConcurrentHashMap。</p>
-<h2 id="jdk1-7"><a href="#jdk1-7" class="headerlink" title="jdk1.7"></a>jdk1.7</h2> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>

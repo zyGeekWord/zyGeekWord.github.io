@@ -172,6 +172,61 @@
     
     
     <article
+  id="post-ConcurrentHashMap-一"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/04/09/ConcurrentHashMap-%E4%B8%80/"
+    >ConcurrentHashMap(一)</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/09/ConcurrentHashMap-%E4%B8%80/" class="article-date">
+  <time datetime="2021-04-09T13:41:18.000Z" itemprop="datePublished">2021-04-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8/">日常</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>当我们提到Map集合的时候，我们第一想法都是HashMap和HashTable，但是HashMap和HashTable都有自己的缺点。</p>
+<p>首先HashMap它跟HashTable比，HashMap因为没有加锁，所以它的效率很高，但同时，它在多线程环境下，它无法保证数据同步，反之HashTable加了锁，但是同时也使它的效率降低，所以，在jdk1.5中加入了ConcurrentHashMap，但是ConcurrentHashMap发扬光大的还是在jdk1.7和1.8版本中，这两个版本的ConcurrentHashMap有着非常巨大的区别，本章我们先初步介绍这两个版本的ConcurrentHashMap。</p>
+<h2 id="jdk1-7"><a href="#jdk1-7" class="headerlink" title="jdk1.7"></a>jdk1.7</h2> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-String字符串有没有上限"
   class="article article-type-post"
   itemscope
@@ -685,70 +740,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-装箱拆箱"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
-    >装箱拆箱</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/" class="article-date">
-  <time datetime="2021-03-10T08:35:28.000Z" itemprop="datePublished">2021-03-10</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="装箱-java中将这个机制设置为自动"><a href="#装箱-java中将这个机制设置为自动" class="headerlink" title="装箱(java中将这个机制设置为自动)"></a>装箱(java中将这个机制设置为自动)</h2><ul>
-<li>装箱的概念为将基本数据类型转换为包装类型</li>
-<li>构造函数：可用于将基本类型转换为包装器类型</li>
-<li>valueOf()：可用于将基本类型转换为包装器类型</li>
-<li>自动装箱<ul>
-<li><p>int x= 1; Integer y = x;</p>
-</li>
-<li><p>public void demo(Integer a){} int x = 1; demo(x);</p> 
-      <a class="article-more-link" href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>

@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-20T01:51:08.142Z</updated>
+  <updated>2022-05-05T09:40:23.003Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>synchronized的实现原理与应用</title>
+    <link href="http://example.com/2022/05/05/synchronized/"/>
+    <id>http://example.com/2022/05/05/synchronized/</id>
+    <published>2022-05-05T08:43:43.000Z</published>
+    <updated>2022-05-05T09:40:23.003Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;synchronized是Java中一个元老级别的角色，我们都叫他重量级锁，但是随着jdk1.6对其进行了各种优化后，它在一些情况下就不是那么重了。&lt;/p&gt;
+&lt;p&gt;先看一下synchronized实现我们代码同步的基础：Java中每个对象都可以作为锁。具体表现为如下三种格式</summary>
+        
+      
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql回表</title>
@@ -452,32 +478,6 @@
     
     
     <category term="缓存" scheme="http://example.com/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>装箱拆箱</title>
-    <link href="http://example.com/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"/>
-    <id>http://example.com/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/</id>
-    <published>2021-03-10T08:35:28.000Z</published>
-    <updated>2022-02-22T03:23:34.096Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;装箱-java中将这个机制设置为自动&quot;&gt;&lt;a href=&quot;#装箱-java中将这个机制设置为自动&quot; class=&quot;headerlink&quot; title=&quot;装箱(java中将这个机制设置为自动)&quot;&gt;&lt;/a&gt;装箱(java中将这个机制设置为自动)&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;装箱的概念为将基本数据类型转换为包装类型&lt;/li&gt;
-&lt;li&gt;构造函数：可用于将基本类型转换为包装器类型&lt;/li&gt;
-&lt;li&gt;valueOf()：可用于将基本类型转换为包装器类型&lt;/li&gt;
-&lt;li&gt;自动装箱&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;int x= 1; Integer y = x;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;public void demo(Integer a){} int x = 1; demo(x);&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
     
   </entry>
   
