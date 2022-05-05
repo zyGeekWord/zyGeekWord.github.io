@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-20T01:12:31.003Z</updated>
+  <updated>2022-04-20T01:51:08.142Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2022/04/12/mysql%E5%9B%9E%E8%A1%A8/"/>
     <id>http://example.com/2022/04/12/mysql%E5%9B%9E%E8%A1%A8/</id>
     <published>2022-04-12T12:28:19.000Z</published>
-    <updated>2022-04-20T01:12:31.003Z</updated>
+    <updated>2022-04-20T01:51:08.142Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Mysql回表&quot;&gt;&lt;a href=&quot;#Mysql回表&quot; class=&quot;headerlink&quot; title=&quot;Mysql回表&quot;&gt;&lt;/a&gt;Mysql回表&lt;/h1&gt;&lt;h2 id=&quot;首先我们要先了解什么是聚簇索引和非聚簇索引&quot;&gt;&lt;a href=&quot;#首先我们要先了解什么是聚簇索引和非聚簇索引&quot; class=&quot;headerlink&quot; title=&quot;首先我们要先了解什么是聚簇索引和非聚簇索引&quot;&gt;&lt;/a&gt;首先我们要先了解什么是聚簇索引和非聚簇索引&lt;/h2&gt;&lt;p&gt;在本文中，我们使用的都是mysql的Innodb存储引擎&lt;/p&gt;
