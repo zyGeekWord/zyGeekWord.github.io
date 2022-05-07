@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-05-05T09:40:23.003Z</updated>
+  <updated>2022-05-07T10:00:42.211Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Monitor</title>
+    <link href="http://example.com/2022/05/07/Monitor/"/>
+    <id>http://example.com/2022/05/07/Monitor/</id>
+    <published>2022-05-07T06:18:04.000Z</published>
+    <updated>2022-05-07T10:00:42.211Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;什么是Monitor&quot;&gt;&lt;a href=&quot;#什么是Monitor&quot; class=&quot;headerlink&quot; title=&quot;什么是Monitor&quot;&gt;&lt;/a&gt;什么是Monitor&lt;/h1&gt;&lt;p&gt;在最开始接触到Monitor是在synchronized关键字中接触到，所以一直好奇到底什么是Monitor，Monitor是做什么的，本文开始了解一下Monitor。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>synchronized的实现原理与应用</title>
@@ -459,25 +478,6 @@
     
     
     <category term="Java" scheme="http://example.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>缓存</title>
-    <link href="http://example.com/2021/03/10/%E7%BC%93%E5%AD%98/"/>
-    <id>http://example.com/2021/03/10/%E7%BC%93%E5%AD%98/</id>
-    <published>2021-03-10T08:40:10.000Z</published>
-    <updated>2022-02-22T03:23:34.096Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;缓存（缓存雪崩，缓存击穿，缓存穿透）&quot;&gt;&lt;a href=&quot;#缓存（缓存雪崩，缓存击穿，缓存穿透）&quot; class=&quot;headerlink&quot; title=&quot;缓存（缓存雪崩，缓存击穿，缓存穿透）&quot;&gt;&lt;/a&gt;缓存（缓存雪崩，缓存击穿，缓存穿透）&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;首先&lt;/strong&gt;，什么是缓存，在计算机中，数据的运行方式是 CPU&amp;gt;内存&amp;gt;储存，所以内存是直接与cpu交流的，最接近CPU的，所以内存的效率是很高的，但是，内存是RAM，也就是说，当机器停机或断电情况下，内存会全部消失。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="日常学习" scheme="http://example.com/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="缓存" scheme="http://example.com/tags/%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   

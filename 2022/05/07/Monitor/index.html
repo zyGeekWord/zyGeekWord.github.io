@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Archives |  爱吃猫粮的哈士奇的个人博客</title>
+      <title>Monitor |  爱吃猫粮的哈士奇的个人博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -54,136 +54,233 @@
       
     <main class="content on">
       <section class="outer">
+  <article
+  id="post-Monitor"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Monitor
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/05/07/Monitor/" class="article-date">
+  <time datetime="2022-05-07T06:18:04.000Z" itemprop="datePublished">2022-05-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+  </div>
   
-  <ul class="ads">
-    
-        <li>
-            <a target="_blank" rel="noopener" href="https://curl.qcloud.com/kvO7hb43">
-                <img src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/ten_1.jpg" width="300" alt="云服务器限时秒杀">
-            </a>
-        </li>
-    
-        <li>
-            <a target="_blank" rel="noopener" href="https://www.vultr.com/?ref=8630075">
-                <img src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/vultr.png" width="300" alt="vultr优惠vps">
-            </a>
-        </li>
-    
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">585</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">2 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="什么是Monitor"><a href="#什么是Monitor" class="headerlink" title="什么是Monitor"></a>什么是Monitor</h1><p>在最开始接触到Monitor是在synchronized关键字中接触到，所以一直好奇到底什么是Monitor，Monitor是做什么的，本文开始了解一下Monitor。</p>
+<span id="more"></span>
+
+<p>Monitor其实是一种同步工具，也可以说是一种同步机制，它通常被描述为一个对象，主要特点是</p>
+<ul>
+<li><p>Monitor相当于一个监视器，一个许可证，只有拿到这个许可证才能向下进行操作，当离开时把许可证归还。</p>
+</li>
+<li><p>Monitor能被多个线程安全的访问，发布许可证的方式，交接给一个线程来访问操作</p>
+</li>
 </ul>
-  
-  
-  <article class="articles">
-    
-    
-    <h1 class="page-type-title">Archives</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2021" class="archive-year">2021</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/10/%E7%BC%93%E5%AD%98/" class="archive-article-date">
-  <time datetime="2021-03-10T08:40:10.000Z" itemprop="datePublished">03/10</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/03/10/%E7%BC%93%E5%AD%98/"
-    >缓存</a> 
-</h2>
+<p>每个对象都会有指针指向monitor对象的起始地址，而每个对象斗嘴在这一个monitor与之关联，在monitor是由ObjectMonitor类来实现的，下面我们看一下ObjectMonitor的数据结构</p>
+<p><code>ObjectMonitor() &#123;     _header       = NULL;//markOop对象头     _count        = 0;     _waiters      = 0,//等待线程数     _recursions   = 0;//重入次数     _object       = NULL;//监视器锁寄生的对象。锁不是平白出现的，而是寄托存储于对象中。     _owner        = NULL;//指向获得ObjectMonitor对象的线程或基础锁     _WaitSet      = NULL;//处于wait状态的线程，会被加入到waitSet；     _WaitSetLock  = 0;     _Responsible  = NULL;     _succ         = NULL;     _cxq          = NULL;     FreeNext      = NULL;     _EntryList    = NULL;//处于等待锁block状态的线程，会被加入到entryList；     _SpinFreq     = 0;     _SpinClock    = 0;     OwnerIsThread = 0;     _previous_owner_tid = 0;//监视器前一个拥有者线程的ID &#125;</code></p>
+<p>这里我们要了解一下对象的内存结构</p>
+<p>Java中，对象在内存中分为三块区域：<strong>对象头</strong>，<strong>实例数据</strong>，<strong>对齐填充</strong></p>
+<ul>
+<li><p><strong>对象头：</strong>由标记字(mark word)，类指针(klass word)和数组长度组成，当对象为数组时，有数组长度，不是数组时由前两种组成</p>
+</li>
+<li><p><strong>实例数据：</strong>主要包括对象的各种成员变量，包括基本类型和引用类型。基本类型直接存储内容，引用类型则是存储的制真，static类型的变量会放到类中，而不是放到实例数据里</p>
+</li>
+<li><p><strong>对齐填充：</strong>主要作用时提升CPU访问速度，本文不做详细讲述</p>
+<p>如下图所示</p>
+</li>
+</ul>
+<p><img src="D:\blog\zyGeekWord.github.io\source\image-20220507145841427.png" alt="image-20220507145841427"></p>
+<p><strong>对象头mark word</strong></p>
+<p>mark word 主要用来表示对象的县城锁定状态，另外还可以用来配合GC，以及存放该对象的hashCode以64系统为例，mark word是64bit来表示</p>
+<p><img src="D:\blog\zyGeekWord.github.io\source\image-20220507175952193.png" alt="image-20220507175952193"></p>
  
-
-    </header>
-    
-    
-  </div>
-</article>
+      <!-- reward -->
       
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/" class="archive-article-date">
-  <time datetime="2021-03-10T08:35:28.000Z" itemprop="datePublished">03/10</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/03/10/%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
-    >装箱拆箱</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
-  <time datetime="2021-03-10T08:28:15.000Z" itemprop="datePublished">03/10</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/03/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/"
-    >数据库事务</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  <time datetime="2021-03-10T03:48:07.000Z" itemprop="datePublished">03/10</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2021/03/10/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
-    >单例模式</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
       
     </div>
-  </div>
-  
-  
-
-  
-  <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/page/2/">上一页</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/05/07/Monitor/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/05/05/synchronized/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">synchronized的实现原理与应用</div>
+      </a>
+    
   </nav>
-  
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -332,6 +429,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link

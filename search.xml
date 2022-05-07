@@ -717,4 +717,42 @@
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Monitor</title>
+    <url>/2022/05/07/Monitor/</url>
+    <content><![CDATA[<h1 id="什么是Monitor"><a href="#什么是Monitor" class="headerlink" title="什么是Monitor"></a>什么是Monitor</h1><p>在最开始接触到Monitor是在synchronized关键字中接触到，所以一直好奇到底什么是Monitor，Monitor是做什么的，本文开始了解一下Monitor。</p>
+<span id="more"></span>
+
+<p>Monitor其实是一种同步工具，也可以说是一种同步机制，它通常被描述为一个对象，主要特点是</p>
+<ul>
+<li><p>Monitor相当于一个监视器，一个许可证，只有拿到这个许可证才能向下进行操作，当离开时把许可证归还。</p>
+</li>
+<li><p>Monitor能被多个线程安全的访问，发布许可证的方式，交接给一个线程来访问操作</p>
+</li>
+</ul>
+<p>每个对象都会有指针指向monitor对象的起始地址，而每个对象斗嘴在这一个monitor与之关联，在monitor是由ObjectMonitor类来实现的，下面我们看一下ObjectMonitor的数据结构</p>
+<p><code>ObjectMonitor() &#123;     _header       = NULL;//markOop对象头     _count        = 0;     _waiters      = 0,//等待线程数     _recursions   = 0;//重入次数     _object       = NULL;//监视器锁寄生的对象。锁不是平白出现的，而是寄托存储于对象中。     _owner        = NULL;//指向获得ObjectMonitor对象的线程或基础锁     _WaitSet      = NULL;//处于wait状态的线程，会被加入到waitSet；     _WaitSetLock  = 0;     _Responsible  = NULL;     _succ         = NULL;     _cxq          = NULL;     FreeNext      = NULL;     _EntryList    = NULL;//处于等待锁block状态的线程，会被加入到entryList；     _SpinFreq     = 0;     _SpinClock    = 0;     OwnerIsThread = 0;     _previous_owner_tid = 0;//监视器前一个拥有者线程的ID &#125;</code></p>
+<p>这里我们要了解一下对象的内存结构</p>
+<p>Java中，对象在内存中分为三块区域：<strong>对象头</strong>，<strong>实例数据</strong>，<strong>对齐填充</strong></p>
+<ul>
+<li><p><strong>对象头：</strong>由标记字(mark word)，类指针(klass word)和数组长度组成，当对象为数组时，有数组长度，不是数组时由前两种组成</p>
+</li>
+<li><p><strong>实例数据：</strong>主要包括对象的各种成员变量，包括基本类型和引用类型。基本类型直接存储内容，引用类型则是存储的制真，static类型的变量会放到类中，而不是放到实例数据里</p>
+</li>
+<li><p><strong>对齐填充：</strong>主要作用时提升CPU访问速度，本文不做详细讲述</p>
+<p>如下图所示</p>
+</li>
+</ul>
+<p><img src="D:\blog\zyGeekWord.github.io\source\image-20220507145841427.png" alt="image-20220507145841427"></p>
+<p><strong>对象头mark word</strong></p>
+<p>mark word 主要用来表示对象的县城锁定状态，另外还可以用来配合GC，以及存放该对象的hashCode以64系统为例，mark word是64bit来表示</p>
+<p><img src="D:\blog\zyGeekWord.github.io\source\image-20220507175952193.png" alt="image-20220507175952193"></p>
+]]></content>
+      <categories>
+        <category>日常学习</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
 </search>
